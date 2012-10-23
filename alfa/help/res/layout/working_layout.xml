@@ -5,17 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center|top"
     android:orientation="vertical" >
-
-    <ToggleButton
-        android:id="@+id/toggleButton_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Режим отжима"
-        android:text="ToggleOffButton"
-        android:textOff="iNeedHelp OFF"
-        android:textOn="iNeedHelp ON" 
-        />
-
+    
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,5 +23,17 @@
             />
 
     </FrameLayout>
+
+    <ToggleButton
+        android:id="@+id/toggleButton_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Режим отжима"
+        android:text="ToggleOffButton"
+        android:textOff="iNeedHelp OFF"
+        android:textOn="iNeedHelp ON" 
+        />
+
+    
 
 </LinearLayout>
