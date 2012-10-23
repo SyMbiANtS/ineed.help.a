@@ -276,6 +276,8 @@ public class app_start extends Activity implements OnCheckedChangeListener
 		    listenButton.putExtra("smsPhone",nuText);
 		    listenButton.putExtra("callPhone",dialNum);
 		    
+		    toggleHelpButton.setChecked(false);
+		    
 			startActivity(listenButton);
 			
         	
