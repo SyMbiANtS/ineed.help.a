@@ -53,24 +53,6 @@ import java.util.Locale;
 public class app_start extends Activity implements OnCheckedChangeListener 
 {
 	  
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-		
-		/*
-		Locale locale = new Locale("ru");
-		Locale.setDefault(locale);
-		Configuration config = new Configuration();
-		config.locale = locale;
-		getResources().updateConfiguration(config,null);
-		
-		*/
-		
-		
-
-		
-	}
 	
 	
 /*	@Override
@@ -223,6 +205,36 @@ public class app_start extends Activity implements OnCheckedChangeListener
         
         
     }
+    
+    
+    @Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		ToggleButton toggleHelpButton;
+		
+		toggleHelpButton = (ToggleButton) findViewById(R.id.toggleButton1);
+		
+		toggleHelpButton.setOnCheckedChangeListener(null);
+		toggleHelpButton.setChecked(true);
+		toggleHelpButton.setOnCheckedChangeListener(this);
+		
+		/*
+		Locale locale = new Locale("ru");
+		Locale.setDefault(locale);
+		Configuration config = new Configuration();
+		config.locale = locale;
+		getResources().updateConfiguration(config,null);
+		
+		*/
+		
+		
+
+		
+	}
+	
+    
+    
 
     public boolean loadInitData()
     {    	    	
