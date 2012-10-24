@@ -90,7 +90,10 @@ public class send_sms extends Activity
 	      WindowManager.LayoutParams lp = getWindow().getAttributes();
 	        lp.screenBrightness = (float) 0.01;
 	        getWindow().setAttributes(lp);
-
+		      
+	        displayCurrentPhones();
+		    //displayCurrentPhones();
+		      
 	        final ToggleButton toggleOffButton = (ToggleButton) findViewById(R.id.toggleButton_1);
 			toggleOffButton.setChecked(true) ;
 			toggleOffButton.setOnLongClickListener(new OnLongClickListener() 
@@ -130,9 +133,10 @@ public class send_sms extends Activity
 			public boolean onLongClick(View v) {
 					// TODO Auto-generated method stub
 				
-					doThings();
 					doOtherThings();
-					System.exit(0);
+					doThings();
+					
+				//	System.exit(0);
 				//	setOnbg();
 				//	moveTaskToBack(true);
 				
@@ -142,8 +146,7 @@ public class send_sms extends Activity
 //	 	 LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 //	      lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1111, 1, this.locationListener);
 	      
-	      displayCurrentPhones();
-	      displayCurrentPhones();
+
 	      
 		}
 
@@ -362,6 +365,7 @@ public class send_sms extends Activity
 				@Override
 				public void run() {
 					performDial();
+					setOnbg();
 					
 						}
 					}, 777);

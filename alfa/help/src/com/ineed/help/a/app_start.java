@@ -9,6 +9,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import com.ineed.help.a.R;
+import com.ineed.help.a.send_sms;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -211,13 +212,13 @@ public class app_start extends Activity implements OnCheckedChangeListener
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		ToggleButton toggleHelpButton;
+		//ToggleButton toggleHelpButton;
 		
-		toggleHelpButton = (ToggleButton) findViewById(R.id.toggleButton1);
+		//toggleHelpButton = (ToggleButton) findViewById(R.id.toggleButton1);
 		
-		toggleHelpButton.setOnCheckedChangeListener(null);
-		toggleHelpButton.setChecked(true);
-		toggleHelpButton.setOnCheckedChangeListener(this);
+		//toggleHelpButton.setOnCheckedChangeListener(null);
+		//toggleHelpButton.setChecked(true);
+		//toggleHelpButton.setOnCheckedChangeListener(this);
 		
 		/*
 		Locale locale = new Locale("ru");
@@ -233,7 +234,112 @@ public class app_start extends Activity implements OnCheckedChangeListener
 		
 	}
 	
+    public void closeBtnBehavior(int joke)
+    {
+    	
+    	final Button bb2 = (Button)findViewById(R.id.button1);
+    	Button btnClose = (Button) findViewById(R.id.button3);
+    	
+    	
+    	switch (joke) {
+    	
+    	case 1:
+    	
+
+    	bb2.setText(R.string.alrighty);
+    	
+        btnClose.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			       
+				bb2.setText(R.string.some_joke);
+			        	return;
+			           
+				
+			}
+		});
+    	case 2:
+    	{
+    		bb2.setText(R.string.bye_word);
+	        
+	        btnClose.setOnClickListener(new OnClickListener() {
+				
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+				       
+				        	finish();
+				           System.exit(0);
+				           
+					
+				}
+			});
+			
+	        
+		//finishActivity(1); //no
+		
+		return;
+    		
+    	}
+        
+    	default:
+    	{
+    		bb2.setText(R.string.bye_word);
+	        
+	        btnClose.setOnClickListener(new OnClickListener() {
+				
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+				       
+				        	finish();
+				           System.exit(0);
+				           
+					
+				}
+			});
+
+		
+		return;
+    		
+    		
+    		
+    		
+    	}
+    	
+    }
+    }
     
+    
+
+    
+    public void performAction()
+    {
+    	
+    	  String nuText;
+	    	EditText phoneNum = (EditText) findViewById(R.id.editText3);
+	    	nuText = phoneNum.getText().toString();
+	    	
+	    	  
+	    EditText smsTextEdit = (EditText) findViewById(R.id.editText2);
+	    String smsText = smsTextEdit.getText().toString();
+	    	
+	    	
+	    EditText phoneTextEdit = (EditText) findViewById(R.id.editText1);
+      String dialNum = phoneTextEdit.getText().toString();
+	    
+	   
+		
+		Intent listenButton = new Intent();
+	    listenButton.setClass(this, send_sms.class);
+	    
+	    listenButton.putExtra("smsTXT",smsText);
+	    listenButton.putExtra("smsPhone",nuText);
+	    listenButton.putExtra("callPhone",dialNum);
+	    
+	    
+	    startActivity(listenButton);
+    	
+    }
     
 
     public boolean loadInitData()
@@ -267,81 +373,14 @@ public class app_start extends Activity implements OnCheckedChangeListener
     
 		if (isChecked)
 		{
-			   String nuText;
-		    	EditText phoneNum = (EditText) findViewById(R.id.editText3);
-		    	nuText = phoneNum.getText().toString();
-		    	
-		    	  
-		    EditText smsTextEdit = (EditText) findViewById(R.id.editText2);
-		    String smsText = smsTextEdit.getText().toString();
-		    	
-		    	
-		    EditText phoneTextEdit = (EditText) findViewById(R.id.editText1);
-	        String dialNum = phoneTextEdit.getText().toString();
-		    
-		   
-			
-			Intent listenButton = new Intent();
-		    listenButton.setClass(this, send_sms.class);
-		    
-		    listenButton.putExtra("smsTXT",smsText);
-		    listenButton.putExtra("smsPhone",nuText);
-		    listenButton.putExtra("callPhone",dialNum);
-		    
-		    toggleHelpButton.setChecked(false);
-		    
-			startActivity(listenButton);
-			
-        	
-			bb2.setText(R.string.alrighty);
-        	
-        	
-        	//send_sms ssms = new send_sms();
-         //   send_sms ssms = new send_sms();
-        //	ssms.dispatchKeyEvent(KeyEvent event);
-        	
-       // Intent sendS = new Intent();
-     
-		//sendS.setClass(this, send_sms.class);
-       
-        	
-	     //  com.ineed.help.send_sms ssms = new com.ineed.help.send_sms();
-	     //  Class sms_help = ssms.getClass();   
-		
-	        
-	        btnClose.setOnClickListener(new OnClickListener() {
-				
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-				       
-					bb2.setText(R.string.some_joke);
-				        	return;
-				           
-					
-				}
-			});
-			
+			closeBtnBehavior(1);
+			toggleHelpButton.setChecked(false);
+	        performAction();
 			
 		}
 		else
 		{
-			bb2.setText(R.string.bye_word);
-	        
-	        btnClose.setOnClickListener(new OnClickListener() {
-				
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-				       
-				        	finish();
-				           System.exit(0);
-				           
-					
-				}
-			});
-			
-		finishActivity(1); //no
-		
-		return;
+			closeBtnBehavior(2);
 		}
 		
 		
